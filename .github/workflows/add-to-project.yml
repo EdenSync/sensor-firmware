@@ -1,0 +1,31 @@
+---
+name: Add new issues to Org Project
+
+permissions:
+  contents: read
+
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+
+jobs:
+  add-to-project:
+    name: Add issue to Org project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get Organization Name
+        id: get-org-name
+        run: |
+          # Extract the organization name dynamically from GITHUB_REPOSITORY
+          ORG_NAME="${GITHUB_REPOSITORY%%/*}"
+          echo "ORG_NAME=${ORG_NAME}" >> "$GITHUB_ENV"
+          echo "$ORG_NAME"
+
+      - name: Add issue to Org project
+        uses: actions/add-to-project@v1.0.2
+        with:
+          project-url: https://github.com/orgs/${{ env.ORG_NAME }}/projects/2
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
