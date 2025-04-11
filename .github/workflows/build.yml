@@ -6,6 +6,9 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
+permissions:
+  contents: read
+
 jobs:
   build:
     strategy:
@@ -37,7 +40,7 @@ jobs:
           if [ "${{ runner.os }}" = "Windows" ]; then
             EXTRA_TWISTER_FLAGS="--short-build-path -O/tmp/twister-out"
           fi
-          west twister -T app -v --inline-logs --integration $EXTRA_TWISTER_FLAGS
+          west twister -T app -v --inline-logs --integration "$EXTRA_TWISTER_FLAGS"
 
       - name: Twister Tests
         working-directory: example-application
@@ -46,4 +49,4 @@ jobs:
           if [ "${{ runner.os }}" = "Windows" ]; then
             EXTRA_TWISTER_FLAGS="--short-build-path -O/tmp/twister-out"
           fi
-          west twister -T tests -v --inline-logs --integration $EXTRA_TWISTER_FLAGS
+          west twister -T tests -v --inline-logs --integration "$EXTRA_TWISTER_FLAGS"
