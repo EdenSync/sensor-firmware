@@ -31,3 +31,20 @@ super-linter.log
 
 # GitHub Actions leftovers
 github_conf
+
+# editors
+.vscode
+*.swp
+*~
+
+# python
+.venv
+
+# build
+/build*
+/twister-out*
+
+__pycache__/
+
+# docs
+/doc/_build*
