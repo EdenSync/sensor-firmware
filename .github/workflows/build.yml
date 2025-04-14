@@ -43,7 +43,7 @@ jobs:
 
       - name: Build
         run: |
-          west build -b promicro_nrf52840/nrf52840 app
+          west build -b promicro_nrf52840/nrf52840 sensor-firmware/app
 
       # - name: Twister Tests
       #   working-directory: example-application
