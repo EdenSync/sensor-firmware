@@ -33,6 +33,14 @@ jobs:
           app-path: sensor-firmware
           toolchains: arm-zephyr-eabi
 
+      - name: List directory contents (debug)
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Top-level contents:"
+          ls -la
+          echo "sensor-firmware directory contents:"
+          ls -la sensor-firmware
+
       - name: Build
         run: |
           west build -b promicro_nrf52840/nrf52840 app
