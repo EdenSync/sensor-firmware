@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          path: app
+          path: sensor-firmware
 
       # - name: Set up Python
       #   uses: actions/setup-python@v5
@@ -30,12 +30,12 @@ jobs:
       - name: Setup Zephyr project
         uses: zephyrproject-rtos/action-zephyr-setup@v1
         with:
-          app-path: app
+          app-path: sensor-firmware
           toolchains: arm-zephyr-eabi
 
       - name: Build
         run: |
-          west build app -b promicro_nrf52840/nrf52840
+          west build -b promicro_nrf52840/nrf52840 app
 
       # - name: Twister Tests
       #   working-directory: example-application
