@@ -35,6 +35,7 @@ jobs:
           FIX_MARKDOWN_PRETTIER: true
           FIX_PYTHON_PYINK: true
           FIX_PYTHON_BLACK: true
+          FIX_CLANG_FORMAT: true
           VALIDATE_PYTHON_PYLINT: false
           FIX_CLANG_CHECK: true
           VALIDATE_CPP: false
