@@ -42,6 +42,7 @@ jobs:
           SAVE_SUPER_LINTER_SUMMARY: false
           VALIDATE_YAML_PRETTIER: false
           VALIDATE_YAML: false
+          LINTER_RULES_PATH: app
       - name: Commit and push linting fixes
         # Run only on:
         # - Pull requests
