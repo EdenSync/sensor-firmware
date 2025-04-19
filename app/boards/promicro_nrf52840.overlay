@@ -1,0 +1,13 @@
+
+// / {
+// 	chosen {
+// 		zephyr,console = &rtt;
+// 		zephyr,shell-uart = &rtt;
+// 		zephyr,log-backend = &rtt;
+// 	};
+// };
+
+
+&adc{
+	status = "disabled";
+};
