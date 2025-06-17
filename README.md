@@ -2,7 +2,7 @@
 
 ## Project setup
 
-Make sure you have the **nRF Connect** extension installed for VS Code.
+Make sure you have the **nRF Connect** extension installed for VS Code with 3.0.2 toolchain SDK.
 
 1. Initialize the project:
 
