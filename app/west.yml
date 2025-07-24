@@ -22,3 +22,6 @@ manifest:
           - hal_nordic # required by the custom_plank board (Nordic based)
           - hal_stm32 # required by the nucleo_f302r8 board (STM32 based)
           - segger
+    - name: openthread
+      url: https://github.com/openthread/openthread
+      revision: main
