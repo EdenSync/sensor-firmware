@@ -43,6 +43,7 @@ jobs:
           VALIDATE_CPP: false
           SAVE_SUPER_LINTER_SUMMARY: false
           VALIDATE_YAML_PRETTIER: false
+          VALIDATE_NATURAL_LANGUAGE: false
           VALIDATE_YAML: false
           LINTER_RULES_PATH: app
       - name: Commit and push linting fixes
