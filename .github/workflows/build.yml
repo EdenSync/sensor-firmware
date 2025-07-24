@@ -23,13 +23,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          path: sensor-firmware
 
-      # - name: Set up Python
-      #   uses: actions/setup-python@v5
-      #   with:
-      #     python-version: 3.11
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Debug directory contents
+        run: |
+          echo "::group::Listing root directory"
+          ls -la
+          echo "Absolute path: $(pwd)"
+          echo "::endgroup::"
 
       - name: Setup Zephyr project
         uses: zephyrproject-rtos/action-zephyr-setup@v1
@@ -39,7 +44,7 @@ jobs:
 
       - name: Build
         run: |
-          west build -b promicro_nrf52840/nrf52840 sensor-firmware/app
+          west build -b promicro_nrf52840/nrf52840 app
 
       # - name: Twister Tests
       #   working-directory: example-application
