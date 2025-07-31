@@ -1,9 +1,12 @@
 ---
 name: Lint
 
-on: # yamllint disable-line rule:truthy
-  push: null
-  pull_request: null
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
@@ -33,9 +36,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FIX_SHELL_SHFMT: true
           FIX_MARKDOWN_PRETTIER: true
+          FIX_PYTHON_PYINK: true
+          FIX_PYTHON_BLACK: true
+          VALIDATE_PYTHON_PYLINT: false
+          FIX_CLANG_CHECK: true
+          VALIDATE_CPP: false
           SAVE_SUPER_LINTER_SUMMARY: false
           VALIDATE_YAML_PRETTIER: false
+          VALIDATE_NATURAL_LANGUAGE: false
           VALIDATE_YAML: false
+          LINTER_RULES_PATH: app
       - name: Commit and push linting fixes
         # Run only on:
         # - Pull requests
