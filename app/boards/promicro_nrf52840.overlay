@@ -1,13 +1,25 @@
 
-// / {
-// 	chosen {
-// 		zephyr,console = &rtt;
-// 		zephyr,shell-uart = &rtt;
-// 		zephyr,log-backend = &rtt;
-// 	};
-// };
+/ {
+	aliases {
+		adc0 = &adc;
+	};
+	zephyr,user {
+		io-channels = <&adc 0>;
+	};
+};
 
 
-&adc{
-	status = "disabled";
+&adc {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	
+	channel@0 {
+		reg = <0>;
+		zephyr,gain = "ADC_GAIN_1_4";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS,10)>;
+		zephyr,input-positive = <NRF_SAADC_AIN0>;
+		zephyr,resolution = <12>;
+		zephyr,oversampling = <2>; /* x4 */
+	};
 };
